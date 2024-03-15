@@ -8,6 +8,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 @Path("/temperaturas")
 public class TemperaturasResource {
@@ -45,10 +46,37 @@ public class TemperaturasResource {
 		return new Temperatura("La Chorrera", 14, 37);
 	}
 
+    @GET
+    @Path("/maxima")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response maxima() {
+        if (temperaturas.isEmpty()) {
+            return Response.status(404)
+                    .entity("No hay temperaturas")
+                    .build();
+        } else {
+            int temperaturaMax = temperaturas.maxima();
+            return Response.ok(Integer.toString(temperaturaMax))
+					.header("X-Institucion", "IMHPA")
+                    .build();
+        }
+        /*return Response.status(404)
+                .language("es-ES")
+                .header("X-Response", "Hola")
+                .entity(temperaturas)
+                .build();
+
+         */
+    }
+
+    /*
+    Forma por defecto donde Quarkus automáticamente serializa la respuesta para devolver un JSON o TEXT_PLAIN
+    y donde no se puede cambiar el código de estado
 	@GET
 	@Path("/maxima")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String maxima() {
 		return Integer.toString(temperaturas.maxima());
 	}
+     */
 }
