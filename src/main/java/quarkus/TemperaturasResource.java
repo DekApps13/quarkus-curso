@@ -1,12 +1,10 @@
 package quarkus;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
@@ -68,6 +66,14 @@ public class TemperaturasResource {
 
          */
     }
+
+	@GET
+	@Path("{ciudad}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Temperatura sacar(@PathParam("ciudad") String ciudad) {
+		return temperaturas.sacarTemperatura(ciudad)
+				.orElseThrow(() -> new NoSuchElementException("No hay registros para la ciudad: " + ciudad));
+	}
 
     /*
     Forma por defecto donde Quarkus automáticamente serializa la respuesta para devolver un JSON o TEXT_PLAIN
