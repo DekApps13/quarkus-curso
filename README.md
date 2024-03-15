@@ -1,51 +1,24 @@
 # app-api
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Este projecto esta construido utilizando el Framework de Java: Quarkus
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+## ¿Cómo ejecutar la aplicación en mode Dev?
 
-## Running the application in dev mode
+Para ejecutar el modo Dev y poder ver los cambios en tiempo real, ejecuta lo siguiente:
 
-You can run your application in dev mode that enables live coding using:
+En Windows:
 ```shell script
-./mvnw compile quarkus:dev
+.\mvnw.cmd quarkus:dev
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
-
-## Packaging and running the application
-
-The application can be packaged using:
+En macOS/Linux:
 ```shell script
-./mvnw package
-```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
-
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
+./mvnw quarkus:dev
 ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: 
+Usando quarkus-cli:
 ```shell script
-./mvnw package -Dnative
+quarkus dev
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/app-api-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
-
-## Related Guides
-
+> **_NOTA:_**  El Dev UI está disponible solo en modo Dev, aquí: http://localhost:8080/q/dev/.
