@@ -1,3 +1,6 @@
+# DDBB
+db.mv.db
+
 #Maven
 target/
 pom.xml.tag
