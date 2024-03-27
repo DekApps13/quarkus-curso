@@ -76,6 +76,9 @@ Devuelve la temperatura de una ciudad dada.
 En el caso de no haber temperatura para esta ciudad, devuelve: "No hay registros para la ciudad: {ciudad}"
 
 ## Books
+
+Esta Entidad se diseñó bajo el patrón **Repository** que _implementa_ la Interface `PanacheRepository`.
+
 ### GET /books
 Lista todos los libros registrados en la DDBB.
 
@@ -88,7 +91,28 @@ Inserta un nuevo libro a la DDBB.
 {
     "title": "",
     "numPages": 0,
-    "pubDate": "",
+    "pubDate": "yyyy-mm-dd",
     "description": ""
+}
+```
+
+## Magazine
+
+Esta Entidad se diseñó bajo el patrón **Active Record** que _hereda_ de la clase abstracta `PanacheEntity`.
+
+### GET /magazine
+Lista todas las revistas registradas en la DDBB.
+
+### POST /magazine
+Inserta una nueva revista a la DDBB.
+
+**_Plantilla:_**
+
+```json
+{
+  "title": "",
+  "numPages": 0,
+  "pubDate": "yyyy-mm-dd",
+  "description": ""
 }
 ```
